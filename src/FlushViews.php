@@ -2,7 +2,7 @@
 
 namespace Laracasts\Dolly;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class FlushViews
 {

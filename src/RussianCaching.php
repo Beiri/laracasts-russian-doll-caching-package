@@ -2,39 +2,46 @@
 
 namespace Laracasts\Dolly;
 
-use Cache;
+use Illuminate\COntracts\Cache\Repository as Cache;
+use Illuminate\Database\Eloquent\Model;
 
 class RussianCaching
 {
-    /**
-     * A list of model cache keys.
-     *
-     * @param array $keys
-     */
-    protected static $keys = [];
+    protected $cache;
 
-    /**
-     * Setup our caching mechanism.
-     *
-     * @param mixed $model
-     */
-    public static function setUp($model)
+    public function __construct(Cache $cache)
     {
-        static::$keys[] = $key = $model->getCacheKey();
-
-        ob_start();
-
-        return Cache::tags('views')->has($key);
+        $this->cache = $cache;
     }
 
-    public static function tearDown()
+    public function put($key, $fragment)
     {
-        $key = array_pop(static::$keys);
+        $key = $this->normalizeCacheKey($key);
 
-        $html = ob_get_clean();
+        return $this
+            ->cache
+            ->tags('views')
+            ->rememberForever($key, function () use ($fragment) {
+                return $fragment;
+            });
+    }
 
-        return Cache::tags('views')->rememberForever($key, function () use ($html) {
-            return $html;
-        });
+    public function has($key)
+    {
+        $key = $this->normalizeCacheKey($key);
+
+        return $this
+            ->cache
+            ->tags('views')
+            ->has($key);
+    }
+
+    protected function normalizeCacheKey($key)
+    {
+        if ($key instanceof Model) {
+            return $key->getCacheKey();
+        }
+
+        return $key;
     }
 }

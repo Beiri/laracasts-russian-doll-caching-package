@@ -11,6 +11,11 @@
       "Laracasts\\Dolly\\": "src/"
     }
   },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  },
   "authors": [
     {
       "name": "Beiri Alife",
@@ -20,5 +25,10 @@
   "minimum-stability": "dev",
   "require": {
     "illuminate/support": "^5.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.2",
+    "illuminate/database": "^5.1",
+    "illuminate/cache": "^5.1"
   }
 }
