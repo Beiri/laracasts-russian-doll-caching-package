@@ -1,0 +1,24 @@
+{
+  "name": "laracasts/dolly",
+  "description": "Russian Doll Caching for Laravel.",
+  "license": "MIT",
+  "keyword": [
+    "laravel",
+    "cache"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Laracasts\\Dolly\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Beiri Alife",
+      "email": "beiri.al@outlook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "illuminate/support": "^5.1"
+  }
+}
