@@ -2,7 +2,7 @@
 
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use Laracasts\Dolly\RussianCaching;
+use Laracasts\Matryoshka\RussianCaching;
 
 class RusianCachingTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Cache\Repository;
-use Laracasts\Dolly\BladeDirective;
-use Laracasts\Dolly\RussianCaching;
+use Laracasts\Matryoshka\BladeDirective;
+use Laracasts\Matryoshka\RussianCaching;
 
 class BladeDirectiveTest extends TestCase
 {

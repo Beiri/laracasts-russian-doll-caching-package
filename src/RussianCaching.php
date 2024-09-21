@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracasts\Dolly;
+namespace Laracasts\Matryoshka;
 
 use Illuminate\COntracts\Cache\Repository as Cache;
 use Illuminate\Database\Eloquent\Model;

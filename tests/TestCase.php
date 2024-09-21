@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Eloquent\Model;
-use Laracasts\Dolly\Cacheable;
+use Laracasts\Matryoshka\Cacheable;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase
 {

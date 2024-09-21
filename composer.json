@@ -1,5 +1,5 @@
 {
-  "name": "laracasts/dolly",
+  "name": "laracasts/matryoshka",
   "description": "Russian Doll Caching for Laravel.",
   "license": "MIT",
   "keyword": [
@@ -8,7 +8,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Laracasts\\Dolly\\": "src/"
+      "Laracasts\\Matryoshka\\": "src/"
     }
   },
   "autoload-dev": {

@@ -1,11 +1,12 @@
 <?php
 
-namespace Laracasts\Dolly;
+namespace Laracasts\Matryoshka;
 
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
-class DollyServiceProvider extends ServiceProvider
+class MatryoshkaServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -15,11 +16,11 @@ class DollyServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('cache', function ($expression) {
-            return "<?php if (! app('Laracasts\Dolly\BladeDirective')->setUp{$expression}) { ?>";
+            return "<?php if (! app('Laracasts\Matryoshka\BladeDirective')->setUp{$expression}) { ?>";
         });
 
         Blade::directive('endcache', function () {
-            return "<?php } echo app('Laracasts\Dolly\BladeDirective')->tearDown() ?>";
+            return "<?php } echo app('Laracasts\Matryoshka\BladeDirective')->tearDown() ?>";
         });
     }
 
@@ -31,7 +32,7 @@ class DollyServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(BladeDirective::class, function () {
-            return new BladeDirective();
+            return new BladeDirective(new RussianCaching(app('cache.store')));
         });
     }
 }
